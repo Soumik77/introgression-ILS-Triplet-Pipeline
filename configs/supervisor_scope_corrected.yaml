@@ -1,0 +1,43 @@
+experiment_id: supervisor_scope_corrected
+
+# Supervisor scope: every taxon count from 4 through 180, with 10 independent
+# random rooted backbones at each size.
+taxon_count_range:
+  start: 4
+  end: 180
+  step: 1
+taxon_prefix: A
+taxon_width: 1
+backbone_strategy: balance_stratified_random
+backbones_per_taxon_count: 10
+backbone_candidate_multiplier: 20
+backbone_assignment: cross_product
+
+pendant_base: 1.0
+gene_flow_height: 0.25
+direction_strategy: distance_stratified
+ils_levels: [0.02, 0.10, 0.50]
+gammas: [0.00, 0.25, 0.50]
+gene_tree_counts: [500, 1000, 2000, 2500]
+
+# The supervisor grid counts three pair slots at gamma=0. At gamma=0 there is
+# no biological donor-recipient pair, so those slots are represented as three
+# independently seeded null replicates instead of false pair labels. Positive
+# gamma cells have one replicate for each close/intermediate/distant pair.
+null_replicates: 3
+positive_replicates: 1
+deduplicate_gamma_zero: true
+
+# Large trees use a deterministic, taxon-covering sample. Small trees remain
+# exhaustive. This is an analysis cap, not a simulation-condition feature.
+max_triplets_per_simulation: 1000
+
+# The full candidate manifest has 191,160 runs. Deadline mode uses a
+# factor-balanced 3-run subset per backbone (5,310 runs). Compact mode uses a
+# factor-balanced 12-run subset per backbone (21,240 runs).
+deadline_runs_per_backbone: 3
+analysis_runs_per_backbone: 12
+expected_candidate_runs: 191160
+expected_deadline_runs: 5310
+expected_analysis_runs: 21240
+base_seed: 20260828

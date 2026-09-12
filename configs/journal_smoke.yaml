@@ -1,0 +1,14 @@
+experiment_id: journal_smoke
+taxa: [A, B, C, D, E, F]
+backbone_strategy: stratified
+backbone_count: 6
+backbone_assignment: cross_product
+pendant_base: 1.0
+gene_flow_height: 0.25
+direction_strategy: distance_stratified
+ils_levels: [0.10]
+gammas: [0.00, 0.25]
+gene_tree_counts: [20]
+replicates: 1
+deduplicate_gamma_zero: true
+base_seed: 20260828
